@@ -69,6 +69,7 @@ resource "google_compute_firewall" "ssh" {
   target_tags = ["${var.name}-ssh"]
 }
 
+/*
 // Bastion host
 data "google_compute_image" "bastion" {
   family  = "${var.bastion_image_family}"
@@ -109,3 +110,4 @@ output "bastion_instance" {
 output "bastion" {
   value = "gcloud compute ssh --ssh-flag=\"-A\" $(terraform output bastion_instance)"
 }
+*/
