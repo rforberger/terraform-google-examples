@@ -59,7 +59,7 @@ variable "disk_size_gb" {
 
 variable "access_config" {
   description = "The access config block for the instances. Set to [{}] for ephemeral external IP."
-  type        = "list"
+  type        = list
   default     = []
 }
 
