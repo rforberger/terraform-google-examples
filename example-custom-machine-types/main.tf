@@ -76,7 +76,7 @@ data "google_compute_image" "bastion" {
 }
 
 module "bastion" {
-  source             = "git::https://github.com/terraform-google-modules/terraform-google-vm/tree/master/examples/mig/full?ref=v4.0.0
+  source             = "git::https://github.com/terraform-google-modules/terraform-google-vm/tree/master/examples/mig/full?ref=v4.0.0"
   region             = "${var.region}"
   zone               = "${var.zone}"
   network            = "${google_compute_subnetwork.default.name}"
