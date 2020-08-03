@@ -23,7 +23,7 @@ resource "google_compute_instance" "default" {
   count                     = "${var.num_nodes}"
   name                      = "${var.name}-${count.index + 1}"
   zone                      = "${var.zone}"
-  tags                      = ["${concat(list("${var.name}-ssh", "${var.name}"), var.node_tags)}"]
+  tags                      = "${concat(list("${var.name}-ssh", "${var.name}"), var.node_tags)}"
   machine_type              = "${var.machine_type}"
   min_cpu_platform          = "${var.min_cpu_platform}"
   allow_stopping_for_update = true
