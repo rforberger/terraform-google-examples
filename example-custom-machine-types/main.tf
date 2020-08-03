@@ -1,5 +1,5 @@
 provider "google" {
-  region = "${var.region}"
+  region = ${var.region}
 }
 
 data "google_project" "current" {}
