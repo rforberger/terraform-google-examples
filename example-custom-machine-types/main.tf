@@ -43,7 +43,6 @@ resource "google_compute_instance" "default" {
     access_config {
       // Ephemeral IP
     }
-    address       = "${var.network_ip}"
   }
 
   metadata = "${merge(
