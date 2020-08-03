@@ -76,8 +76,8 @@ data "google_compute_image" "bastion" {
 }
 
 module "bastion" {
-  source             = "GoogleCloudPlatform/managed-instance-group/google"
-  version            = "1.1.14"
+  source             = "terraform-google-modules/terraform-google-vm/examples/mig/full/"
+  version            = "v4.0.0"
   region             = "${var.region}"
   zone               = "${var.zone}"
   network            = "${google_compute_subnetwork.default.name}"
