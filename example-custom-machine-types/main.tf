@@ -76,7 +76,7 @@ data "google_compute_image" "bastion" {
 }
 
 module "bastion" {
-  source             = "https://github.com/terraform-google-modules/terraform-google-vm/tree/master/examples/mig/full"
+  source             = "git::https://github.com/terraform-google-modules/terraform-google-vm/tree/master/examples/mig/full"
   version            = "v4.0.0"
   region             = "${var.region}"
   zone               = "${var.zone}"
