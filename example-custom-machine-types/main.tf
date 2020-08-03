@@ -40,7 +40,7 @@ resource "google_compute_instance" "default" {
 
   network_interface {
     subnetwork    = "${google_compute_subnetwork.default.name}"
-    access_config = ["${var.access_config}"]
+    access_config = "${var.access_config}"
     address       = "${var.network_ip}"
   }
 
