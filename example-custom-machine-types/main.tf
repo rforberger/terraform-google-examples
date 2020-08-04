@@ -67,6 +67,7 @@ resource "google_compute_firewall" "ssh" {
 
   // source_tags = ["${var.name}-bastion"]
   source_tags = ["${var.name}-ssh"]
+  target_tags = ["${var.name}-ssh"]
 }
 
 /*
