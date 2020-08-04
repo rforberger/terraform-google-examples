@@ -120,8 +120,8 @@ module "nat-gateway" {
   version    = "1.2.0"
   region     = "${var.region}"
   zone       = "${var.zone}"
-  network    = "${google_compute_subnetwork.default.name}"
-  subnetwork = "${google_compute_subnetwork.default.name}"
+  network    = var.network_name
+  subnetwork = var.network_name
   tags       = ["${var.name}"]
 }
 
