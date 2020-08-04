@@ -79,17 +79,18 @@ data "google_compute_image" "bastion" {
 module "bastion" {
   source             = "terraform-google-modules/vm/google//modules/mig"
   version            = "v4.0.0"
+  instance_template	 = "${data.google_compute_image.bastion.self_link}"
   region             = "${var.region}"
-  zone               = "${var.zone}"
+  //zone               = "${var.zone}"
   network            = "${google_compute_subnetwork.default.name}"
   subnetwork         = "${google_compute_subnetwork.default.name}"
-  target_tags        = ["${var.name}-bastion"]
-  machine_type       = "${var.bastion_machine_type}"
-  name               = "${var.name}-bastion"
-  compute_image      = "${data.google_compute_image.bastion.self_link}"
-  http_health_check  = false
-  service_port       = "80"
-  service_port_name  = "http"
+  //target_tags        = ["${var.name}-bastion"]
+  //machine_type       = "${var.bastion_machine_type}"
+  //name               = "${var.name}-bastion"
+  //compute_image      = "${data.google_compute_image.bastion.self_link}"
+  //http_health_check  = false
+  //service_port       = "80"
+  //service_port_name  = "http"
   wait_for_instances = true
 }
 
