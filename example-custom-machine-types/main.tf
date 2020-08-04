@@ -75,9 +75,9 @@ data "google_compute_image" "bastion" {
   family  = "${var.bastion_image_family}"
   project = "${var.bastion_image_project == "" ? data.google_project.current.project_id : var.bastion_image_project}"
 }
-/*
+
 module "bastion" {
-  source             = "git::https://github.com/terraform-google-modules/terraform-google-vm?ref=v4.0.0"
+  source             = "terraform-google-modules/vm/google//modules/mig?ref=v4.0.0"
   region             = "${var.region}"
   zone               = "${var.zone}"
   network            = "${google_compute_subnetwork.default.name}"
@@ -91,7 +91,7 @@ module "bastion" {
   service_port_name  = "http"
   wait_for_instances = true
 }
-  */
+
     
  
  
