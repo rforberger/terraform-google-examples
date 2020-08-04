@@ -54,7 +54,7 @@ variable "disk_type" {
 
 variable "disk_size_gb" {
   description = "The size of the image in gigabytes."
-  default     = 10
+  default     = 20
 }
 
 variable "access_config" {
