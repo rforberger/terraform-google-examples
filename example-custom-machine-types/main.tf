@@ -94,16 +94,18 @@ module "bastion" {
   wait_for_instances = true
 }
 
-  
+/*
 resource "google_compute_router" "router" {
   name    = "load-balancer-module-router"
   region  = var.region
   network = ${google_compute_network.default.self_link}
 }
+*/
 
 module "cloud-nat" {
   source     = "terraform-google-modules/cloud-nat/google"
-  router     = "load-balancer-module-router"
+  //router     = "load-balancer-module-router"
+  create_router = "load-balancer-module-router"
   project_id = var.project_id
   region     = var.region
   name       = "my-cloud-nat-load-balancer-module-router"
