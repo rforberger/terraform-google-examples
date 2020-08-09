@@ -101,7 +101,13 @@ resource "google_compute_router" "router" {
   network = var.network_name
 }
 
-
+module "cloud-nat" {
+  source     = "terraform-google-modules/terraform-google-cloud-nat"
+  router     = "load-balancer-module-router"
+  project_id = var.project_id
+  region     = var.region
+  name       = "my-cloud-nat-load-balancer-module-router"
+}
   
  /*
  DEPRECATED
