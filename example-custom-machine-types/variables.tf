@@ -119,3 +119,7 @@ variable "bastion_image_project" {
 variable "bastion_machine_type" {
   default = "n1-standard-1"
 }
+
+variable "project_id" {
+  default = "env0-test"
+}
