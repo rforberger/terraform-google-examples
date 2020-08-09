@@ -104,7 +104,7 @@ resource "google_compute_router" "router" {
 
 module "cloud-nat" {
   source     = "terraform-google-modules/cloud-nat/google"
-  //router     = "load-balancer-module-router"
+  router     = "load-balancer-module-router"
   create_router = "load-balancer-module-router"
   project_id = var.project_id
   region     = var.region
