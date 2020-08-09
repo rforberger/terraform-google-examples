@@ -98,7 +98,7 @@ module "bastion" {
 resource "google_compute_router" "router" {
   name    = "load-balancer-module-router"
   region  = var.region
-  network = var.network_name
+  network = ${google_compute_network.default.self_link}
 }
 
 module "cloud-nat" {
