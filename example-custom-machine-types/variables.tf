@@ -127,7 +127,7 @@ variable "project_id" {
 variable "service_account" {
   default = [
     {
-      scopes = ["default"]
+      scopes = "default"
     }
   ]
   type = object({
