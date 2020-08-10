@@ -123,3 +123,7 @@ variable "bastion_machine_type" {
 variable "project_id" {
   default = "env0-test"
 }
+
+variable "service_account" {
+  scopes = ["default"]
+}
