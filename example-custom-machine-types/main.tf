@@ -83,7 +83,7 @@ resource "google_compute_address" "ip_address" {
 locals {
   access_config = {
     nat_ip       = google_compute_address.ip_address.address
-    network_tier = "STANDARD"
+    network_tier = "PREMIUM"
   }
 }
 
