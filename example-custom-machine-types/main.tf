@@ -91,7 +91,7 @@ module "instance_template" {
   source          = "terraform-google-modules/vm/google//modules/instance_template"
   project_id      = var.project_id
   subnetwork      = var.network_name
-  service_account = default
+  //service_account = 
   name_prefix     = "simple"
   //tags            = var.tags
   //labels          = var.labels
