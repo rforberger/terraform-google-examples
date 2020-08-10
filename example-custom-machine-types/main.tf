@@ -109,6 +109,7 @@ module "cloud-nat" {
   project_id = var.project_id
   region     = var.region
   name       = "my-cloud-nat-load-balancer-module-router"
+  network    = var.network_name
 }
   
  /*
