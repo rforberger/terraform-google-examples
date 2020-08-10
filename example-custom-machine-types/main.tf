@@ -76,6 +76,28 @@ data "google_compute_image" "bastion" {
   project = "${var.bastion_image_project == "" ? data.google_project.current.project_id : var.bastion_image_project}"
 }
 
+resource "google_compute_address" "ip_address" {
+  name = "internal-ip"
+}
+
+locals {
+  access_config = {
+    nat_ip       = google_compute_address.ip_address.address
+    //network_tier = "PREMIUM"
+  }
+}
+
+module "instance_template" {
+  source          = "terraform-google-modules/vm/google//modules/instance_template"
+  project_id      = var.project_id
+  subnetwork      = var.network_name
+  service_account = "default"
+  name_prefix     = "simple"
+  //tags            = var.tags
+  //labels          = var.labels
+  access_config   = [local.access_config]
+}
+
 module "bastion" {
   source             = "terraform-google-modules/vm/google//modules/mig"
   version            = "v4.0.0"
