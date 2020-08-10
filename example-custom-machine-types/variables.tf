@@ -125,11 +125,9 @@ variable "project_id" {
 }
 
 variable "service_account" {
-  default = [
-    {
-      scopes = "default"
-    }
-  ]
+  default = {
+    scopes = ["default"]
+  }
   type = object({
     email  = string
     scopes = set(string)
