@@ -127,7 +127,7 @@ variable "project_id" {
 variable "service_account" {
   default = {
     email = "env0-test@env0-test.iam.gserviceaccount.com"
-    scopes = var.service_account_scopes
+    scopes = service_account_scopes
   }
   type = object({
     email  = string
