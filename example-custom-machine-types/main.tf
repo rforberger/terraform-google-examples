@@ -79,7 +79,7 @@ data "google_compute_image" "bastion" {
 module "bastion" {
   source             = "terraform-google-modules/vm/google//modules/mig"
   version            = "v4.0.0"
-  instance_template	 = join("/", var.image_project, var.image_family)
+  instance_template	 = module.instance_template.self_link
   region             = "${var.region}"
   //zone               = "${var.zone}"
   network            = "${google_compute_subnetwork.default.name}"
