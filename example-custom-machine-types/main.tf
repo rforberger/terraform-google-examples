@@ -128,7 +128,6 @@ module "bastion" {
   //service_port       = "80"
   //service_port_name  = "http"
   wait_for_instances = true
-  target_tags 		   = ["bastion-host"]
 }
 
 /*
