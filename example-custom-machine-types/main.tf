@@ -76,8 +76,22 @@ data "google_compute_image" "bastion" {
   project = "${var.bastion_image_project == "" ? data.google_project.current.project_id : var.bastion_image_project}"
 }
 
+
+resource "google_compute_network" "nat-network" {
+  name                    = var.network_name_nat
+  auto_create_subnetworks = false
+}
+
+resource "google_compute_subnetwork" "nat-network" {
+  name                     = var.network_name_nat
+  ip_cidr_range            = var.network_nat_cidr
+  network                  = "${google_compute_network.nat-network.self_link}"
+  region                   = "${var.region}"
+  private_ip_google_access = true
+}
+
 resource "google_compute_address" "ip_address" {
-  name = "internal-ip"
+  name = "external-ip"
 }
 
 locals {
@@ -90,7 +104,7 @@ locals {
 module "instance_template" {
   source          = "terraform-google-modules/vm/google//modules/instance_template"
   project_id      = var.project_id
-  subnetwork      = var.network_name
+  subnetwork      = var.network_name_nat
   service_account = var.service_account
   name_prefix     = "simple"
   //tags            = var.tags
@@ -104,8 +118,8 @@ module "bastion" {
   instance_template	 = module.instance_template.self_link
   region             = "${var.region}"
   //zone               = "${var.zone}"
-  network            = "${google_compute_subnetwork.default.name}"
-  subnetwork         = "${google_compute_subnetwork.default.name}"
+  network            = var.network_name_nat
+  subnetwork         = var.network_name_nat
   //target_tags        = ["${var.name}-bastion"]
   //machine_type       = "${var.bastion_machine_type}"
   //name               = "${var.name}-bastion"
@@ -131,7 +145,7 @@ module "cloud-nat" {
   project_id = var.project_id
   region     = var.region
   name       = "my-cloud-nat-load-balancer-module-router"
-  network    = var.network_name
+  network    = var.network_name_nat
 }
   
  /*

@@ -140,3 +140,11 @@ variable "service_account" {
   })
   description = "Service account to attach to the instance. See https://www.terraform.io/docs/providers/google/r/compute_instance_template.html#service_account."
 }
+
+variable "network_name_nat" [
+  default = "tf-custom-nat"
+}
+
+variable "network_nat_cidr" {
+  default = "10.128.0.0/20"
+}
