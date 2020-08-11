@@ -107,7 +107,7 @@ module "instance_template" {
   subnetwork      = "${google_compute_subnetwork.nat-network.self_link}"
   service_account = var.service_account
   name_prefix     = "simple"
-  //tags            = var.tags
+  tags            = ["bastion-host"]
   //labels          = var.labels
   access_config   = [local.access_config]
 }
@@ -147,6 +147,20 @@ module "cloud-nat" {
   name       = "my-cloud-nat-load-balancer-module-router"
   network    = "${google_compute_network.nat-network.self_link}"
 }
+  
+resource "google_compute_firewall" "cloud-nat-ssh" {
+  name    = "cloud-nat-ssh"
+  network = "${google_compute_subnetwork.nat-network.name}"
+
+  allow {
+    protocol = "tcp"
+    ports    = ["22"]
+  }
+
+  //source_tags = ["${var.name}-bastion"]
+  target_tags = ["bastian-host"]
+} 
+ 
   
  /*
  DEPRECATED
