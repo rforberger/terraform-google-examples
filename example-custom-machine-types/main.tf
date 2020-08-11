@@ -108,7 +108,6 @@ module "instance_template" {
   service_account = var.service_account
   name_prefix     = "simple"
   tags            = ["bastion-host"]
-  network_tags    = ["bastion-host"]
   //labels          = var.labels
   access_config   = [local.access_config]
 }
