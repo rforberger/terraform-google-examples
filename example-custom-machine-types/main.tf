@@ -118,8 +118,8 @@ module "bastion" {
   instance_template	 = module.instance_template.self_link
   region             = "${var.region}"
   //zone               = "${var.zone}"
-  network            = var.network_name_nat
-  subnetwork         = var.network_name_nat
+  network            = "${google_compute_network.nat-network.self_link}"
+  subnetwork         = "${google_compute_subnetwork.nat-network.self_link}"
   //target_tags        = ["${var.name}-bastion"]
   //machine_type       = "${var.bastion_machine_type}"
   //name               = "${var.name}-bastion"
@@ -145,7 +145,7 @@ module "cloud-nat" {
   project_id = var.project_id
   region     = var.region
   name       = "my-cloud-nat-load-balancer-module-router"
-  network    = var.network_name_nat
+  network    = "${google_compute_network.nat-network.self_link}"
 }
   
  /*
