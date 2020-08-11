@@ -104,7 +104,7 @@ locals {
 module "instance_template" {
   source          = "terraform-google-modules/vm/google//modules/instance_template"
   project_id      = var.project_id
-  subnetwork      = var.network_name_nat
+  subnetwork      = "${google_compute_subnetwork.nat-network.self_link}"
   service_account = var.service_account
   name_prefix     = "simple"
   //tags            = var.tags
